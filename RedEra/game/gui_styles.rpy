@@ -102,6 +102,63 @@ image arcade_portrait_frame:
         xsize 5 ysize 600
         xalign 1.0
 
+# 2. 建设进度条 (Construction Bar)
+# 用于 1950s 建设篇的经营小游戏
+screen construction_minigame(current_progress, target_progress):
+    frame:
+        xalign 0.5 yalign 0.2
+        background Solid("#00000080")
+        padding (20, 20)
+        
+        vbox:
+            spacing 10
+            text "PROJECT 156 PROGRESS" style "arcade_text" size 40
+            
+            bar:
+                value current_progress
+                range target_progress
+                xsize 600 ysize 40
+                left_bar Solid(ARCADE_GREEN)
+                right_bar Solid("#555555")
+                
+            text "[current_progress] / [target_progress]" color "#ffffff" xalign 0.5
+
+# --- 蓝色线：资本操纵小游戏 (Corporate Manipulation) ---
+# 这是一个快速点击游戏，模拟操纵股市/镇压暴动
+# 目标：保持条在中间区域 (Balance) 或者 充满 (Greed)
+screen minigame_corporate(current_value, target_value):
+    modal True
+    zorder 100
+
+    default click_power = 5
+
+    add "bg cyberpunk_2050_blue" # 背景
+
+    vbox:
+        xalign 0.5
+        yalign 0.5
+        spacing 50
+
+        text "MARKET STABILIZATION PROTOCOL" style "arcade_text" size 60 color="#00ffff" outlines [(2, "#000000", 0, 0)]
+
+        # 动态变化的进度条
+        bar value current_value range target_value xsize 800 ysize 50 style "arcade_bar"
+
+        text "CLICK TO INJECT CAPITAL" style "arcade_text" size 40 color="#ffffff"
+
+        imagebutton:
+            idle Text(" [ INJECT ] ", style="arcade_text", size=80, color="#00ffff", outlines=[(4, "#000088", 0, 0)])
+            hover Text(" [ INJECT ] ", style="arcade_text", size=90, color="#ffffff", outlines=[(4, "#00ffff", 0, 0)])
+            action [
+                SetVariable("corporate_score", corporate_score + click_power),
+                Play("sound", audio.sfx_typewriter) # 临时用打字机声模拟输入
+            ]
+            xalign 0.5
+
+    # 倒计时/自动衰减逻辑需要外部 label 控制，或者在这里用 timer
+    # 这里简单起见，只做显示和点击
+
+
 # 2. 生命值槽风格的数值条 (Health Bar Style Stat)
 image health_bar_bg:
     Solid("#550000")

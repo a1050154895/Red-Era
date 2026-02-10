@@ -64,3 +64,28 @@ create_placeholder_image("qian_arcade.png", "QIAN", size=(600, 600), bg_color="#
 create_placeholder_image("nanjing_1949.png", "1949 南京\n总统府", bg_color="#2980b9", text_color="#ecf0f1")
 create_placeholder_image("cyberpunk_city.png", "2050\nCyber City", bg_color="#8e44ad", text_color="#00ffff")
 
+# 5. 补全 visuals.rpy 中缺失的背景
+create_placeholder_image("jinggangshan.png", "1928\n井冈山", bg_color="#27ae60", text_color="#ecf0f1")
+create_placeholder_image("long_march.png", "1934\n长征", bg_color="#7f8c8d", text_color="#ecf0f1")
+create_placeholder_image("yanan.png", "1937\n延安", bg_color="#d35400", text_color="#ecf0f1")
+create_placeholder_image("chongqing.png", "1945\n重庆谈判", bg_color="#2c3e50", text_color="#ecf0f1")
+create_placeholder_image("founding_ceremony.png", "1949\n开国大典", bg_color="#c0392b", text_color="#f1c40f")
+
+create_placeholder_image("korean_war.png", "1950\n抗美援朝", bg_color="#2c3e50", text_color="#ecf0f1")
+create_placeholder_image("factory_1953.png", "1953\n工业建设", bg_color="#7f8c8d", text_color="#f39c12")
+create_placeholder_image("great_leap.png", "1958\n大跃进", bg_color="#e67e22", text_color="#c0392b")
+create_placeholder_image("atomic_bomb.png", "1964\n原子弹", bg_color="#8e44ad", text_color="#f1c40f")
+create_placeholder_image("cultural_revolution.png", "1966\n红色风暴", bg_color="#c0392b", text_color="#f1c40f")
+create_placeholder_image("turning_point_1976.png", "1976\n转折点", bg_color="#2c3e50", text_color="#ecf0f1")
+
+create_placeholder_image("shenzhen_1992.png", "1992\n深圳", bg_color="#3498db", text_color="#f1c40f")
+create_placeholder_image("olympic_2008.png", "2008\n北京奥运", bg_color="#c0392b", text_color="#ecf0f1")
+create_placeholder_image("pandemic_2020.png", "2020\n静默", bg_color="#ecf0f1", text_color="#7f8c8d")
+
+create_placeholder_image("ogas_1990.png", "1990\nOGAS", bg_color="#000000", text_color="#e74c3c")
+create_placeholder_image("mind_upload_2020.png", "2020\n意识上传", bg_color="#1a1a1d", text_color="#9b59b6")
+create_placeholder_image("hive_mind_2050.png", "2050\n赤色蜂巢", bg_color="#c0392b", text_color="#f1c40f")
+
+create_placeholder_image("qian_ai.png", "钱学森 AI", size=(400, 800), bg_color="#2ecc71", text_color="#000000")
+
+

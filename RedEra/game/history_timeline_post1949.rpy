@@ -80,12 +80,11 @@ label timeline_1953_five_year_plan:
     "1953年，战争的硝烟散去，大规模经济建设开始了。"
     "长春第一汽车制造厂奠基，鞍山钢铁厂高炉点火。"
     
-    show qian normal at center with dissolve
+    show qian arcade at center with pixel_enter
     
     "一位刚从美国冲破重重阻力归来的科学家走进了你的办公室。"
     
     qian "（目光坚定）手里没剑，和有剑不用，是两回事。我们要搞现代工业，搞国防科技，没有这些，腰杆子就不硬。"
-    
     qian "但我看现在的工业计划，还是太依赖苏联模式了。我们是不是该有些自己的想法？"
     
     menu:
@@ -95,9 +94,120 @@ label timeline_1953_five_year_plan:
             "这是历史的选择。在那个被封锁的年代，生存是第一位的。"
             $ gs.change_stat("productivity", 15)
             $ gs.change_stat("stability", 5)
+            
+            # --- 街机小游戏：建设加速 ---
+            call minigame_construction from _call_minigame_construction
+            
             qian "既然如此，那我就去搞那个'大家伙'（导弹/原子弹）。给我五年，不，三年！"
             
         "尝试轻重工业平衡，改善民生 (Stability +10, Productivity +5)":
+            $ gs.change_stat("stability", 10)
+            $ gs.change_stat("productivity", 5)
+            "你试图走一条不同的路，但在这个强敌环伺的年代，这条路注定艰难。"
+
+    jump timeline_1956
+
+label minigame_construction:
+    # 简单的连点小游戏
+    $ construction_score = 0
+    $ target_score = 20
+    
+    show screen construction_minigame(construction_score, target_score)
+    with dissolve
+    
+    "快速点击鼠标以加速建设！(Time Limit: 5s)"
+    
+    $ time_start = renpy.get_game_runtime()
+    
+    label .loop:
+        $ time_now = renpy.get_game_runtime()
+        if (time_now - time_start) > 5.0:
+            jump .end
+            
+        if construction_score >= target_score:
+            jump .success
+            
+        $ ui.textbutton("BUILD!", clicked=ui.callsinnewcontext("increment_score"), xalign=0.5, yalign=0.6, text_size=60, text_color="#f1c40f", text_outlines=[(4, "#000000", 0, 0)])
+        $ ui.interact()
+        jump .loop
+
+    label .success:
+        hide screen construction_minigame
+        play sound audio.sfx_score
+        show text "{size=80}{color=#f1c40f}PERFECT BUILD!{/color}{/size}" at truecenter
+        with zoomin
+        pause 1.0
+        hide text
+        $ gs.change_stat("productivity", 10) # 额外奖励
+        return
+
+    label .end:
+        hide screen construction_minigame
+        "建设完成。"
+        return
+
+label increment_score:
+    $ construction_score += 1
+    return
+
+label timeline_1956:
+    scene black with fade
+    centered "{size=40}1956年{/size}"
+    
+    "三大改造完成，社会主义制度确立。"
+    "但在辉煌的成就背后，急躁的情绪也在滋长。"
+    "‘多快好省’成了新的口号。"
+    
+    jump timeline_1958
+
+label timeline_1958:
+    scene bg factory_1953 # 复用工厂背景，最好有炼钢背景
+    show layer master at red_flash
+    
+    "1958年。大跃进。"
+    "全国上下，土法炼钢。庄稼烂在地里，人们却在围着高炉转。"
+    
+    # 街机风格：警报
+    play sound audio.sfx_glitch
+    show text "{size=60}{color=#e74c3c}WARNING: STABILITY CRITICAL{/color}{/size}" at truecenter
+    with flash
+    
+    "彭德怀在庐山会议上拍了桌子。那是正直者的怒吼。"
+    
+    $ gs.change_stat("stability", -20)
+    $ gs.change_stat("productivity", -15)
+    
+    jump timeline_1964
+
+label timeline_1964:
+    scene bg desert_mushroom_cloud with fade
+    
+    "1964年10月16日，罗布泊。"
+    
+    show qian arcade at center
+    qian "倒计时... 3, 2, 1, 起爆！"
+    
+    play sound audio.sfx_explosion
+    show layer master at screen_shake
+    
+    # 视觉震撼：蘑菇云升起
+    "一声惊雷，震撼了世界。中国从此有了核保护伞。"
+    
+    $ gs.change_stat("intl_pressure", -30) # 压力大幅骤减
+    $ gs.change_stat("productivity", 10)
+    
+    jump timeline_1966
+
+label timeline_1966:
+    scene bg beijing_snow
+    show layer master at red_flash
+    
+    "1966年。风暴来了。"
+    "这不仅仅是一场权力的更迭，更是一场触及灵魂的革命。"
+    "只是，代价太过沉重。"
+    
+    jump timeline_1976
+
             "老百姓太苦了，该让他们过几天好日子。"
             $ gs.change_stat("stability", 10)
             $ gs.change_stat("productivity", 5)
@@ -360,6 +470,8 @@ label timeline_1975:
 
 label timeline_1976_turning_point:
     scene bg turning_point_1976 with fade
+    play music audio.bgm_history_sad fadein 2.0
+    play sfx audio.sfx_rain fadein 2.0
     
     "1976年。巨星陨落。"
     "周恩来、朱德、毛泽东相继逝世。整个国家笼罩在巨大的悲痛与迷茫中。"

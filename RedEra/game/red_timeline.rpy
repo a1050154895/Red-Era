@@ -425,6 +425,7 @@ label timeline_red_2019:
 
 label timeline_red_2020:
     scene bg red_cyber_city with fade
+    play music audio.bgm_red_space fadein 2.0
     centered "{size=60}{color=#e74c3c}2020{/color}{/size}"
 
     "全面建成小康社会？不，我们宣布‘初级阶段’结束，进入‘中级社会主义’。"
@@ -439,6 +440,7 @@ label timeline_red_2021:
 
     "建党百年。天安门广场上空，无人机组成的红色镰锤遮天蔽日。"
     "最高领袖宣布：‘我们的目标是星辰大海。’"
+    play sfx audio.sfx_crowd
 
     jump timeline_red_2022
 

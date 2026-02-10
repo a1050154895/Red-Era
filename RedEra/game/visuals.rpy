@@ -41,6 +41,14 @@ image overlay_red_glory:
     Solid("#ff0000", alpha=0.1)
     breathing
 
+# 蓝色霓虹 (Blue Neon)
+image overlay_blue_neon:
+    Solid("#00ffff", alpha=0.1)
+    breathing
+    contains:
+        Text("SYSTEM_OVERRIDE", size=50, color="#00ffff", alpha=0.2, xalign=0.9, yalign=0.1)
+        glitch_shake
+
 # 赛博基底 (Cyberpunk Neon) - 历史/混合线
 image bg cyberpunk_neon:
     Solid("#2c003e")
@@ -104,7 +112,7 @@ image bg may_fourth:
 
 image bg jinggangshan:
     contains:
-        Solid("#27ae60")
+        "images/jinggangshan.png"
     contains:
         "overlay_history_grain"
     contains:
@@ -113,7 +121,7 @@ image bg jinggangshan:
 
 image bg long_march:
     contains:
-        Solid("#7f8c8d")
+        "images/long_march.png"
     contains:
         "overlay_history_grain"
     contains:
@@ -125,7 +133,7 @@ image bg long_march:
 
 image bg yanan:
     contains:
-        Solid("#d35400")
+        "images/yanan.png"
     contains:
         "overlay_history_grain"
     contains:
@@ -134,7 +142,7 @@ image bg yanan:
 
 image bg chongqing:
     contains:
-        Solid("#2c3e50")
+        "images/chongqing.png"
     contains:
         "overlay_history_grain"
     contains:
@@ -143,7 +151,10 @@ image bg chongqing:
 
 image bg founding:
     contains:
-        "bg red_flag_wave" # 引用 gui_styles.rpy 中的赤色基底
+        "images/founding_ceremony.png"
+    contains:
+        "bg red_flag_wave" # 叠加赤色光影
+        alpha 0.3
     contains:
         Text("1949\n开国大典", size=120, color="#f1c40f", xalign=0.5, yalign=0.5, text_align=0.5)
         breathing
@@ -247,7 +258,7 @@ image bg turning_point_1976:
 
 image bg shenzhen_1992:
     contains:
-        Solid("#3498db")
+        "images/shenzhen_1992.png"
     contains:
         Text("1992\n深圳·春天的故事", size=100, color="#f1c40f", xalign=0.5, yalign=0.5, text_align=0.5)
         breathing
@@ -257,20 +268,23 @@ image bg shenzhen_1992:
 
 image bg olympic_2008:
     contains:
-        Solid("#c0392b")
+        "images/olympic_2008.png"
     contains:
         Text("2008\n北京奥运", size=120, color="#ffffff", xalign=0.5, yalign=0.5, text_align=0.5)
         breathing
 
 image bg pandemic_2020:
     contains:
-        Solid("#ecf0f1")
+        "images/pandemic_2020.png"
     contains:
         Text("2020\n静默的世界", size=100, color="#7f8c8d", xalign=0.5, yalign=0.5, text_align=0.5)
 
 image bg cyber_2050_history:
     contains:
-        "bg cyberpunk_neon" # 引用 gui_styles.rpy 中的赛博基底
+        "images/cyberpunk_city.png" # 复用
+    contains:
+        "bg cyberpunk_neon"
+        alpha 0.3
     contains:
         Text("2050\n霓虹都市", size=120, color="#e74c3c", xalign=0.5, yalign=0.5, text_align=0.5)
         breathing
@@ -282,7 +296,7 @@ image bg cyber_2050_history:
 
 image bg ogas_1990:
     contains:
-        Solid("#000000")
+        "images/ogas_1990.png"
     contains:
         Text("1990\nOGAS 网络启动", size=100, color="#e74c3c", xalign=0.5, yalign=0.5, text_align=0.5)
         breathing
@@ -292,7 +306,7 @@ image bg ogas_1990:
 
 image bg mind_upload_2020:
     contains:
-        Solid("#1a1a1d")
+        "images/mind_upload_2020.png"
     contains:
         Text("2020\n意识上传计划", size=100, color="#9b59b6", xalign=0.5, yalign=0.5, text_align=0.5)
         breathing
@@ -302,7 +316,7 @@ image bg mind_upload_2020:
 
 image bg hive_mind_2050:
     contains:
-        "bg red_flag_wave"
+        "images/hive_mind_2050.png"
     contains:
         "overlay_red_glory"
     contains:
@@ -313,6 +327,8 @@ image bg hive_mind_2050:
         slow_zoom
 
 image qian ai:
+    contains:
+        "images/qian_ai.png"
     contains:
         Text("钱\n学\n森\n(AI)", size=150, color="#2ecc71", bold=True)
         xalign 0.5 yalign 0.5

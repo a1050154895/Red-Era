@@ -3,8 +3,8 @@
 # ==========================================
 
 label timeline_blue_1949:
-    scene black with fade
-    play music audio.bgm_blue_cyber fadein 2.0
+    scene bg shanghai_rain_night with fade
+    play music audio.bgm_history_tension fadein 2.0
     centered "{size=40}1949年{/size}"
 
     "就在解放军准备渡江之时，国际形势突变。"
@@ -18,7 +18,7 @@ label timeline_blue_1949:
     jump timeline_blue_1950
 
 label timeline_blue_1950:
-    scene black with fade
+    scene bg shanghai_rain_night with fade
     centered "{size=40}1950年{/size}"
 
     "大规模的‘清党’在南方展开。无数共产党人和进步人士倒在血泊中。"
@@ -28,7 +28,7 @@ label timeline_blue_1950:
     jump timeline_blue_1951
 
 label timeline_blue_1951:
-    scene black with fade
+    scene bg korean_war with fade
     centered "{size=40}1951年{/size}"
 
     "朝鲜战争爆发。国军精锐被派往朝鲜战场，作为美军的‘协从军’。"
@@ -37,7 +37,7 @@ label timeline_blue_1951:
     jump timeline_blue_1952
 
 label timeline_blue_1952:
-    scene black with fade
+    scene bg shanghai_rain_night with fade
     centered "{size=40}1952年{/size}"
 
     "《中美共同防御条约》升级。美军在南京、上海、广州设立永久基地。"
@@ -46,14 +46,19 @@ label timeline_blue_1952:
     jump timeline_blue_1953
 
 label timeline_blue_1953:
-    scene black with fade
+    scene bg factory_1953 with fade
+    play music audio.bgm_blue_cyber fadein 2.0
     centered "{size=40}1953年{/size}"
 
     "朝鲜战争停战。战时工业刺激了经济短暂繁荣。"
     "‘四大家族’利用美援，完成了对金融、交通、能源的绝对垄断。"
+    
+    show overlay_blue_neon
+    "霓虹灯初次点亮了南京路，资本的齿轮开始加速转动。"
 
     $ gs.change_stat("productivity", 10)
     $ gs.change_stat("class_consciousness", -10)
+    hide overlay_blue_neon
 
     jump timeline_blue_1954
 
@@ -149,31 +154,36 @@ label timeline_blue_1963:
     jump timeline_blue_1964
 
 label timeline_blue_1964:
-    scene black with fade
+    scene bg atomic_bomb with fade
     centered "{size=40}1964年{/size}"
 
     "北中国原子弹爆炸成功。"
     "南京政府极度恐慌，请求美国部署核武器。"
+    play sound audio.sfx_glitch
+    show overlay_blue_neon
+    "核阴云下的繁荣，显得格外脆弱。"
+    hide overlay_blue_neon
 
     $ gs.change_stat("intl_pressure", 20)
 
     jump timeline_blue_1965
 
 label timeline_blue_1965:
-    scene black with fade
+    scene bg factory_1953 with fade # 继续使用工厂背景代表代工经济
     centered "{size=40}1965年{/size}"
 
     "美军介入越南战争。南中国成为美军最大的后勤基地和休假地。"
-    "色情产业、毒品泛滥。"
+    "色情产业、毒品泛滥。Bar Girl 成为时代的伤痕。"
 
     jump timeline_blue_1966
 
 label timeline_blue_1966:
-    scene black with fade
+    scene bg cultural_revolution with fade
     centered "{size=40}1966年{/size}"
 
     "北中国爆发‘文化大革命’。"
     "蒋介石发起‘中华文化复兴运动’，实则推行儒家等级观念，禁锢思想。"
+    "‘君君臣臣父父子子’，也是‘老板老板员工员工’。"
 
     jump timeline_blue_1967
 
@@ -258,12 +268,14 @@ label timeline_blue_1975:
     jump timeline_blue_1976
 
 label timeline_blue_1976:
-    scene black with fade
+    scene bg turning_point_1976 with fade
     centered "{size=40}1976年{/size}"
 
     "北中国三巨头去世。文革结束。"
     "南中国这边，蒋经国大力任用技术官僚，经济开始向高科技转型。"
-
+    
+    "命运的齿轮在这里分岔。"
+    
     jump timeline_blue_1977
 
 label timeline_blue_1977:
@@ -382,19 +394,24 @@ label timeline_blue_1988:
     jump timeline_blue_1989
 
 label timeline_blue_1989:
-    scene black with fade
+    scene bg shenzhen_1992 with fade # 象征繁荣泡沫
     centered "{size=40}1989年{/size}"
 
     "北方的政治风波。"
     "南中国媒体大肆报道，标榜自己的‘自由繁荣’。"
     "股市狂飙到12000点。全民炒股，泡沫达到顶峰。"
+    
+    show overlay_blue_neon
+    "每个人都觉得自己是股神。"
+    hide overlay_blue_neon
 
     jump timeline_blue_1990
 
 label timeline_blue_1990:
-    scene black with fade
+    scene bg shenzhen_1992 with flash
     centered "{size=40}1990年{/size}"
 
+    play sound audio.sfx_explosion # 泡沫破裂
     "股市崩盘。中产阶级财富被洗劫一空。"
     "财阀趁机低价收购资产，贫富差距瞬间拉大。"
     "‘野百合学运’。学生要求解散‘万年国会’。"
@@ -456,13 +473,55 @@ label timeline_blue_1996:
     jump timeline_blue_1997
 
 label timeline_blue_1997:
-    scene black with fade
+    scene bg shenzhen_1992 with fade # 借用城市背景
+    play music audio.bgm_blue_glitch fadein 1.0
     centered "{size=40}1997年{/size}"
 
-    "亚洲金融风暴。南中国凭借庞大的外汇储备安然度过。"
-    "但这只是表象。政府动用国库救济大财团，中小企业倒闭潮。"
+    "亚洲金融风暴。"
+    "索罗斯的量子基金横扫东南亚。"
+    
+    show overlay_blue_neon
+    "为了保住汇率，必须动用国家资本。"
+
+    call minigame_corporate_crisis
+    
+    if corporate_score >= 50:
+        "南中国凭借庞大的外汇储备和残酷的内部转嫁，勉强维持了表面繁荣。"
+        $ gs.change_stat("stability", 10)
+    else:
+        "防线崩溃。中小企业倒闭潮，无数人跳楼。"
+        $ gs.change_stat("stability", -20)
+
+    hide overlay_blue_neon
+    play music audio.bgm_blue_cyber fadein 2.0
 
     jump timeline_blue_1998
+
+# 定义小游戏 Label
+label minigame_corporate_crisis:
+    $ corporate_score = 0
+    $ target_score = 100
+    
+    "【系统警告】检测到金融波动。启动市场干预协议。"
+    "疯狂点击 [INJECT] 按钮注入流动性！"
+
+    # 显示小游戏屏幕，持续 5 秒
+    show screen minigame_corporate(corporate_score, target_score)
+    
+    # 简单的倒计时模拟
+    $ time_left = 5.0
+    while time_left > 0:
+        $ time_left -= 0.1
+        pause 0.1
+        # 模拟市场自动下跌
+        $ corporate_score -= 1 
+        if corporate_score < 0:
+            $ corporate_score = 0
+
+    hide screen minigame_corporate
+    
+    "干预结束。最终评分：[corporate_score]"
+    return
 
 label timeline_blue_1998:
     scene black with fade
@@ -596,11 +655,12 @@ label timeline_blue_2011:
     jump timeline_blue_2012
 
 label timeline_blue_2012:
-    scene black with fade
+    scene bg cyberpunk_2050_blue with fade # 开始进入全面赛博化
     centered "{size=40}2012年{/size}"
 
     "智能手机普及。人们沉溺于虚拟的快乐中。"
     "算法开始控制人的思想。"
+    "Cyberpunk is not coming, it is here."
 
     jump timeline_blue_2013
 
@@ -668,11 +728,16 @@ label timeline_blue_2019:
     jump timeline_blue_2020
 
 label timeline_blue_2020:
-    scene bg cyberpunk_neon with fade
+    scene bg pandemic_2020 with fade
     centered "{size=40}2020年{/size}"
 
     "全球大流行。但南中国的‘生物科技’产业借此大发横财。"
     "‘健康码’成为了永久性的电子镣铐。"
+    
+    show overlay_blue_neon
+    play sound audio.sfx_glitch
+    "警告：您的健康码已变红。请立即前往最近的‘再教育隔离中心’。"
+    hide overlay_blue_neon
 
     $ gs.change_stat("stability", -20)
     $ gs.change_stat("productivity", 10)
@@ -718,10 +783,123 @@ label timeline_blue_2024:
     jump timeline_blue_2025
 
 label timeline_blue_2025:
-    scene black with fade
+    scene bg cyberpunk_neon with fade
     centered "{size=40}2025年{/size}"
 
     "《企业主权法》通过。大型跨国公司在领地内拥有完全的司法权和征税权。"
+    "政府名存实亡，变成了企业的‘物业管理处’。"
+
+    $ gs.change_stat("class_consciousness", -20)
+    $ gs.change_stat("productivity", 20)
+
+    jump timeline_blue_2030
+
+label timeline_blue_2030:
+    scene black with fade
+    centered "{size=40}2030年{/size}"
+    play music audio.bgm_blue_glitch fadein 2.0
+
+    "大筛选（The Great Filter）开始。通用人工智能取代了80%的白领工作。"
+    "‘无用阶级’（The Useless Class）诞生。他们聚集在超级城市的底层，靠廉价的合成食物和虚拟现实游戏度日。"
+
+    play sfx audio.sfx_rain fadein 2.0
+    "窗外，酸雨终日不绝。"
+
+    jump timeline_blue_2035
+
+label timeline_blue_2035:
+    scene bg cyberpunk_neon
+    show overlay_blue_neon
+    centered "{size=40}2035年{/size}"
+
+    "底层暴动频发。由于没有工作，罢工失去了意义。"
+    "董事会决定进行‘市场维稳’。"
+
+    # 开启企业操纵小游戏
+    $ corporate_score = 0
+    $ target_corporate_score = 50
+    call screen minigame_corporate(corporate_score, target_corporate_score)
+
+    if corporate_score >= target_corporate_score:
+        "通过精准的‘电子毒品’投放和债务免除，暴动被平息了。"
+        $ gs.change_stat("stability", 10)
+    else:
+        "镇压部队出动。鲜血染红了霓虹灯。"
+        $ gs.change_stat("stability", -20)
+        play sfx audio.sfx_explosion
+
+    jump timeline_blue_2040
+
+label timeline_blue_2040:
+    scene black with fade
+    centered "{size=40}2040年{/size}"
+
+    "‘霓虹瘟疫’（Neon Plague）。一种针对人体植入义体的计算机-生物混合病毒爆发。"
+    "没钱更新防火墙的人，大脑直接被烧毁。"
+    
+    play sfx audio.sfx_glitch
+    show overlay_blue_neon
+    "整个城市在尖叫，但那是电子信号的尖叫。"
+
+    jump timeline_blue_2045
+
+label timeline_blue_2045:
+    scene black with fade
+    centered "{size=40}2045年{/size}"
+
+    "‘涅槃计划’（Project Nirvana）公布。意识上传技术成熟。"
+    "这是通往永生的门票，售价：所有资产 + 灵魂。"
+    "富人开始抛弃衰老的肉体，进入云端服务器。"
+
+    jump timeline_blue_2050
+
+label timeline_blue_2050:
+    scene bg cyberpunk_2050_blue with fade
+    play music audio.bgm_blue_cyber
+    centered "{size=60}2050年{/size}"
+
+    "欢迎来到新世界。"
+    "地面上，是一座巨大的、自动运转的机器坟墓。贫民像老鼠一样在废墟中苟延残喘。"
+    "天空中，巨大的服务器悬浮城闪耀着神圣的蓝光。"
+    
+    "那些上传了意识的‘新人类’，在虚拟天堂中享受着永恒的极乐。"
+    "而你，看着自己锈迹斑斑的机械手臂，不知道自己是否还算是一个‘人’。"
+
+    menu:
+        "仰望天空城 (Accept Fate)":
+            "你跪倒在泥泞中，向着那遥不可及的光芒膜拜。"
+            "系统提示：信仰充值成功。"
+            jump blue_ending_submission
+
+        "拔掉连接线 (Rebel)":
+            play sfx audio.sfx_glitch
+            "你扯断了后颈的神经连接线。剧痛让你清醒。"
+            "即使是地狱，我也要用自己的眼睛去看。"
+            jump blue_ending_rebellion
+
+label blue_ending_submission:
+    scene black
+    "【结局：赛博格的梦】"
+    "你成为了庞大机器的一颗螺丝钉，在虚拟的幻梦中度过了余生。"
+    return
+
+label blue_ending_rebellion:
+    scene black
+    "【结局：断网者】"
+    "你死在了阴暗的巷子里。但在最后一刻，你是自由的。"
+    return
+    
+    show overlay_blue_neon
+    "Citizen ID: [gs.productivity * 1984]"
+    "Social Credit: [gs.stability]"
+    
+    jump timeline_blue_end
+
+label timeline_blue_end:
+    scene black
+    centered "{size=60}BLUE ENDING: THE CORPORATE STATE{/size}"
+    "历史在这里终结，或者说，被私有化了。"
+    return
     "护照被‘工牌’取代。你的国籍就是你的公司。"
 
     jump timeline_blue_2030
