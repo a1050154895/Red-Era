@@ -139,12 +139,12 @@ screen minigame_corporate(current_value, target_value):
         yalign 0.5
         spacing 50
 
-        text "MARKET STABILIZATION PROTOCOL" style "arcade_text" size 60 color="#00ffff" outlines [(2, "#000000", 0, 0)]
+        text "MARKET STABILIZATION PROTOCOL" style "arcade_text" size 60 color "#00ffff" outlines [(2, "#000000", 0, 0)]
 
         # 动态变化的进度条
         bar value current_value range target_value xsize 800 ysize 50 style "arcade_bar"
 
-        text "CLICK TO INJECT CAPITAL" style "arcade_text" size 40 color="#ffffff"
+        text "CLICK TO INJECT CAPITAL" style "arcade_text" size 40 color "#ffffff"
 
         imagebutton:
             idle Text(" [ INJECT ] ", style="arcade_text", size=80, color="#00ffff", outlines=[(4, "#000088", 0, 0)])

@@ -208,15 +208,6 @@ label timeline_1966:
     
     jump timeline_1976
 
-            "老百姓太苦了，该让他们过几天好日子。"
-            $ gs.change_stat("stability", 10)
-            $ gs.change_stat("productivity", 5)
-            qian "民生当然重要。但如果列强再打过来，我们拿什么保护老百姓？这是个两难啊。"
-
-    "在第一个五年计划结束时，中国已经初步建立起了工业化的骨架。"
-    
-    jump timeline_1954
-
 label timeline_1954:
     scene black with fade
     centered "{size=40}1954年{/size}"
