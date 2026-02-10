@@ -48,7 +48,7 @@
 
 1.  克隆本仓库：
     ```bash
-    git clone https://github.com/YourUsername/RedEra.git
+    git clone https://github.com/a1050154895/-.git
     ```
 2.  下载并安装 [Ren'Py 引擎](https://www.renpy.org/)。
 3.  打开 Ren'Py，选择 `RedEra` 文件夹所在的目录。
