@@ -1,4 +1,4 @@
-name: RenPy Web Build and Deploy
+name: Manual RenPy Web Build
 
 on:
   push:
@@ -9,20 +9,41 @@ permissions:
   contents: write
 
 jobs:
-  release:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Build Ren'Py Web
-        uses: Project-K-Workshop/renpy-web-build-action@v1.2.0
-        with:
-          project_dir: 'RedEra'
-          sdk_version: '8.2.1'
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgl1-mesa-glx unzip tar curl
+
+      - name: Download Ren'Py 8.2.1
+        run: |
+          echo "Downloading Ren'Py..."
+          curl -o renpy.tar.bz2 https://www.renpy.org/dl/8.2.1/renpy-8.2.1-sdk.tar.bz2
+          echo "Extracting..."
+          tar -xjf renpy.tar.bz2
+          mv renpy-8.2.1-sdk renpy
+
+      - name: Install Web Support (Raphy)
+        run: |
+          echo "Installing Web DLC..."
+          # Force install the web support libraries needed for web_build
+          ./renpy/renpy.sh launcher install_web_dlc
+
+      - name: Build Web Version
+        run: |
+          echo "Building Web Version..."
+          # Format: <sdk>/renpy.sh <project_dir> web_build <output_dir>
+          ./renpy/renpy.sh ./RedEra web_build ./public
+
+      - name: Add NoJekyll
+        run: touch ./public/.nojekyll
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: build/web
+          folder: public
