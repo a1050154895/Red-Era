@@ -158,6 +158,48 @@ screen minigame_corporate(current_value, target_value):
     # 倒计时/自动衰减逻辑需要外部 label 控制，或者在这里用 timer
     # 这里简单起见，只做显示和点击
 
+# 3. OGAS 资源调配小游戏 (Red Timeline)
+# 玩家需要点击分配算力来平衡资源
+screen minigame_ogas(current_value, target_value):
+    modal True
+    
+    add Solid("#330000") alpha 0.8
+    
+    vbox:
+        xalign 0.5 yalign 0.5
+        spacing 20
+        
+        text "CYBERSYN INTEGRATION" style "arcade_text" color ARCADE_RED xalign 0.5
+        text "ALLOCATE COMPUTING POWER" size 30 color "#ffcccc" xalign 0.5
+        
+        # 进度条
+        bar:
+            value current_value
+            range target_value
+            xsize 800
+            ysize 50
+            style "arcade_bar"
+            left_bar Solid(ARCADE_RED)
+            right_bar Solid("#330000")
+        
+        text "[current_value] / [target_value] PETAFLOPS" size 30 color "#ffffff" xalign 0.5
+        
+        # 按钮
+        imagebutton:
+            idle Text(" [ PROCESS ] ", size=40, color=ARCADE_RED, outlines=[(2, "#000", 0, 0)])
+            hover Text(" [ PROCESS ] ", size=40, color="#ffffff", outlines=[(2, "#000", 0, 0)])
+            action [SetVariable("ogas_score", ogas_score + 5), Play("sound", audio.sfx_typewriter), Show("red_glitch_effect")]
+            xalign 0.5
+
+    # 成功判断
+    if current_value >= target_value:
+        timer 0.5 action Return(True)
+
+# 红色故障特效
+screen red_glitch_effect():
+    add "overlay_glitch" alpha 0.3
+    timer 0.1 action Hide("red_glitch_effect")
+
 
 # 2. 生命值槽风格的数值条 (Health Bar Style Stat)
 image health_bar_bg:
