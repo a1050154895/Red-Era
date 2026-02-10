@@ -73,31 +73,28 @@ image bg cyberpunk_2050_blue:
 
 image bg beijing_snow:
     contains:
-        "bg history_sepia" # 引用 gui_styles.rpy 中的历史基底
+        "images/beijing_snow.png"
     contains:
-        Text("1912\n北京·紫禁城", size=100, color="#bdc3c7", xalign=0.5, yalign=0.5, text_align=0.5)
-        breathing
+        "overlay_history_grain"
     contains:
         Text("❄  ❄  ❄", size=80, color="#ffffff", xalign=0.5, yalign=0.2, alpha=0.3)
         slow_zoom
 
 image bg shanghai_rain_night:
     contains:
-        Solid("#1a1a1d")
+        "images/shanghai_rain_night.png"
     contains:
         "overlay_history_grain"
-    contains:
-        Text("1927\n上海·法租界", size=100, color="#34495e", xalign=0.5, yalign=0.5, text_align=0.5)
-        breathing
     contains:
         Text("/// /// ///", size=100, color="#34495e", xalign=0.5, yalign=0.5, alpha=0.2)
         grain_shake
 
 image bg may_fourth:
     contains:
-        Solid("#c0392b")
+        "images/may_fourth.png"
     contains:
         "overlay_history_grain"
+
     contains:
         Text("1919\n五四运动", size=120, color="#ffffff", xalign=0.5, yalign=0.5, text_align=0.5)
         breathing
@@ -156,24 +153,20 @@ image bg founding:
 # 或者直接使用 Text 定义，但加入动画
 
 image lu normal:
-    contains:
-        Text("鲁\n迅", size=150, color="#2c3e50", bold=True)
-        xalign 0.5 yalign 0.5
-    contains:
-        Text("🖊️", size=100, color="#000000", alpha=0.1, xalign=0.8, yalign=0.8)
-        breathing
+    "images/lu_normal.png"
 
 image chen coat:
-    contains:
-        Text("陈\n赓", size=150, color="#f39c12", bold=True)
-        xalign 0.5 yalign 0.5
-    contains:
-        Text("⚡", size=100, color="#f1c40f", alpha=0.2, xalign=0.5, yalign=0.5)
-        breathing
+    "images/chen_coat.png"
 
-image mao normal = "mao arcade" # 直接引用 gui_styles.rpy 中的定义
-image qian normal = "qian arcade" # 需在 gui_styles.rpy 中添加
-image chiang uniform = "chiang arcade"
+image mao normal:
+    "images/mao_standing.png"
+
+image qian normal:
+    "images/qian_standing.png"
+
+image chiang uniform:
+    "images/chiang_normal.png"
+
 
 # --- 1950s-1976 建设篇 (风格：苏式宣传画/工业) ---
 

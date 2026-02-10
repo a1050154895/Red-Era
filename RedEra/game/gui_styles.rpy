@@ -49,6 +49,31 @@ transform arcade_text_bounce:
     pause 1.0
     repeat
 
+# 屏幕震动 (Screen Shake) - 用于 QTE 或重大事件
+transform screen_shake:
+    linear 0.05 xoffset -20
+    linear 0.05 xoffset 20
+    linear 0.05 xoffset -20
+    linear 0.05 xoffset 20
+    linear 0.05 xoffset 0
+
+# 红色闪光 (Red Flash) - 用于受伤或危机
+transform red_flash:
+    on show:
+        alpha 0.0
+        linear 0.1 alpha 0.5
+        linear 0.1 alpha 0.0
+
+# 街机互动提示 (QTE Prompt)
+image qte_mash_button:
+    Text("PRESS A", size=80, color=ARCADE_RED, outlines=[(4, "#000000", 0, 0)])
+    xalign 0.5 yalign 0.8
+    block:
+        linear 0.1 zoom 1.2
+        linear 0.1 zoom 1.0
+        repeat
+
+
 # ==============================================================================
 # 2. 街机 UI 元素 (Arcade UI Elements)
 # ==============================================================================

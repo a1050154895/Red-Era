@@ -171,11 +171,54 @@ label chapter_1_shanghai:
             jump event_412_passive
 
 label event_412_clash:
-    "雨越下越大，远处隐约传来了密集的枪声..."
-    "（第一章：血色黎明 开启）"
+    scene bg shanghai_rain_night
+    show screen arcade_hud
+    
+    # --- 街机互动：QTE 战斗 ---
+    "突然，一群身穿青布短衫的流氓冲破了雨幕，手里的斧头寒光闪闪。"
+    chen "来得好！"
+    
+    # 模拟 QTE：快速点击
+    show qte_mash_button at center
+    "（快速点击鼠标以进行反击！）"
+    $ renpy.pause(1.0, hard=True) # 模拟反应时间
+    
+    play sound audio.sfx_explosion # 模拟枪声
+    show layer master at screen_shake
+    hide qte_mash_button
+    
+    "砰！砰！砰！"
+    "你手中的勃朗宁喷出火舌，冲在最前面的两个流氓应声倒地。"
+    
+    chen "别恋战！往宝山路撤！工人纠察队在那边接应！"
+    
+    scene black with fade
+    "雨越下越大，血水混着雨水流进了下水道..."
+    
+    # 结果分支
+    $ gs.change_stat("stability", -10)
+    $ gs.change_stat("class_consciousness", 10)
+    
+    "虽然损失惨重，但你们保存了有生力量。这颗火种，将在未来的岁月里燎原。"
+    
     jump timeline_1927_aftermath
 
 label event_412_passive:
+    scene bg shanghai_rain_night
+    
     "第二天清晨，报童的叫卖声打破了死寂，但带来的却是噩耗..."
-    "（第一章：至暗时刻 开启）"
+    
+    play sound audio.sfx_glitch
+    show layer master at red_flash
+    
+    "《申报》头条：工人纠察队被缴械，总工会查封。"
+    "你看着手中的报纸，指甲深深嵌入了掌心。"
+    
+    chen "（声音沙哑）这就是‘舆论’的结果。这就是妥协的代价。"
+    chen "记住这一天。鲜血会教我们怎么走接下来的路。"
+    
+    $ gs.change_stat("stability", 5) # 短期稳定
+    $ gs.change_stat("class_consciousness", -5) # 士气低落
+    $ gs.change_stat("productivity", -5) # 罢工破坏
+    
     jump timeline_1927_aftermath

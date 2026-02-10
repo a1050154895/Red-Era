@@ -46,3 +46,21 @@ create_placeholder_image("lu_normal.png", "鲁迅\n(Lu Xun)", size=(400, 800), b
 create_placeholder_image("chen_coat.png", "陈赓\n(Chen Geng)", size=(400, 800), bg_color="#f39c12", text_color="#2c3e50")
 # 蒋介石
 create_placeholder_image("chiang_normal.png", "蒋介石\n(Chiang)", size=(400, 800), bg_color="#2c3e50", text_color="#ecf0f1")
+# 毛泽东
+create_placeholder_image("mao_standing.png", "毛泽东\n(Mao)", size=(400, 800), bg_color="#c0392b", text_color="#f1c40f")
+# 钱学森
+create_placeholder_image("qian_standing.png", "钱学森\n(Qian)", size=(400, 800), bg_color="#3498db", text_color="#ecf0f1")
+
+# 3. 街机风格侧边头像 (Arcade Side Images)
+# 对应 gui_styles.rpy 中的 Transform("mao arcade", ...)
+# 尺寸建议 600x600，以便缩放
+create_placeholder_image("mao_arcade.png", "MAO", size=(600, 600), bg_color="#c0392b", text_color="#f1c40f")
+create_placeholder_image("chiang_arcade.png", "CHIANG", size=(600, 600), bg_color="#2980b9", text_color="#ecf0f1")
+create_placeholder_image("lu_arcade.png", "LU XUN", size=(600, 600), bg_color="#7f8c8d", text_color="#ecf0f1")
+create_placeholder_image("chen_arcade.png", "CHEN", size=(600, 600), bg_color="#f39c12", text_color="#2c3e50")
+create_placeholder_image("qian_arcade.png", "QIAN", size=(600, 600), bg_color="#3498db", text_color="#ecf0f1")
+
+# 4. 更多背景
+create_placeholder_image("nanjing_1949.png", "1949 南京\n总统府", bg_color="#2980b9", text_color="#ecf0f1")
+create_placeholder_image("cyberpunk_city.png", "2050\nCyber City", bg_color="#8e44ad", text_color="#00ffff")
+

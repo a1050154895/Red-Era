@@ -197,6 +197,108 @@ label timeline_1927_aftermath:
     scene black with fade
     centered "{size=40}1927年 下半年{/size}"
     
+    "大革命失败了。白色恐怖笼罩着中国。"
+    "但在绝望中，有人在南昌打响了第一枪，有人在秋收时节举起了暴动的旗帜。"
+    
+    jump timeline_1928
+
+label timeline_1928:
+    scene bg jinggangshan with fade
+    centered "{size=40}1928年{/size}"
+    
+    "井冈山的翠竹依旧青翠。毛泽东在这里点燃了‘工农武装割据’的星星之火。"
+    "‘朱毛会师’，红四军成立。"
+    
+    show mao normal at center with pixel_enter
+    
+    mao "敌人只能砍下我们的头颅，决不能动摇我们的信仰！因为我们信仰的主义，乃是宇宙的真理！"
+    
+    menu:
+        "面对围剿，红军的战略是？"
+        
+        "敌进我退，敌驻我扰 (生产力 -5, 阶级觉悟 +10)":
+             $ gs.change_stat("class_consciousness", 10)
+             "游击战术初显神威。红军在运动中消灭敌人，壮大自己。"
+             
+        "分兵把守，寸土不让 (稳定 -10, 生产力 -10)":
+             $ gs.change_stat("stability", -10)
+             "分兵导致被各个击破。这是惨痛的教训。"
+             
+    jump timeline_1931
+
+label timeline_1931:
+    scene black with fade
+    centered "{size=40}1931年{/size}"
+    
+    "9月18日，沈阳。日军炸毁南满铁路，炮轰北大营。"
+    "‘九一八事变’爆发。东北沦陷。"
+    
+    play sound audio.sfx_explosion
+    show layer master at screen_shake
+    
+    "南京政府下令‘绝对不抵抗’。数千万同胞沦为亡国奴。"
+    
+    $ gs.change_stat("intl_pressure", 20)
+    $ gs.change_stat("stability", -15)
+    
+    jump timeline_1934
+
+label timeline_1934:
+    scene bg long_march with fade
+    centered "{size=40}1934年{/size}"
+    
+    "第五次反围剿失败。红军被迫进行战略转移。"
+    "这是一次前所未有的远征。湘江之战，血染湘江。"
+    
+    # 街机互动：长征抉择
+    show qte_mash_button at center
+    "（这里是生与死的考验！保持信念！）"
+    $ renpy.pause(1.0, hard=True)
+    hide qte_mash_button
+    
+    jump timeline_1935
+
+label timeline_1935:
+    scene black with fade
+    centered "{size=40}1935年{/size}"
+    
+    "遵义会议。历史在这一刻转弯。"
+    "确立了毛泽东在党和红军中的领导地位。挽救了党，挽救了红军，挽救了中国革命。"
+    
+    $ gs.change_stat("class_consciousness", 20)
+    $ gs.change_stat("stability", 10)
+    
+    jump timeline_1937
+
+label timeline_1937:
+    scene bg yanan with fade
+    centered "{size=40}1937年{/size}"
+    
+    "7月7日，卢沟桥事变。全面抗战爆发。"
+    "延安成为了全国进步青年的圣地。"
+    
+    show mao normal at center
+    mao "中国人民站起来了！这一次，我们绝不退缩！"
+    
+    jump timeline_1945
+
+label timeline_1945:
+    scene bg chongqing with fade
+    centered "{size=40}1945年{/size}"
+    
+    "日本投降。举国欢腾。"
+    "但在重庆，一场鸿门宴正在上演。"
+    
+    show mao normal at left
+    show chiang uniform at right
+    
+    "毛泽东飞赴重庆谈判。为了和平，为了民主。"
+    
+    chiang "（面带微笑，眼神冰冷）润之啊，这天下还是得有一个主义，一个领袖才行。"
+    
+    jump timeline_1949
+
+    
     "四一二的血迹未干，七一五政变接踵而至。国共合作彻底破裂。"
     "但在黑暗中，枪声再次响起。"
     "8月1日南昌城头的枪声，9月湘赣边界的秋收起义..."
