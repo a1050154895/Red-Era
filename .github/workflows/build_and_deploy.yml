@@ -17,7 +17,7 @@ jobs:
       - name: Install System Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgl1 unzip tar curl
+          sudo apt-get install -y libgl1 unzip tar curl xvfb
 
       - name: Download Ren'Py 8.2.1
         run: |
@@ -26,18 +26,20 @@ jobs:
           echo "Extracting..."
           tar -xjf renpy.tar.bz2
           mv renpy-8.2.1-sdk renpy
+          chmod +x renpy/renpy.sh
 
       - name: Install Web Support (Raphy)
         run: |
           echo "Installing Web DLC..."
-          # Force install the web support libraries needed for web_build
-          ./renpy/renpy.sh launcher install_web_dlc
+          # Use xvfb-run to simulate a display server
+          xvfb-run ./renpy/renpy.sh launcher install_web_dlc
 
       - name: Build Web Version
         run: |
           echo "Building Web Version..."
-          # Format: <sdk>/renpy.sh <project_dir> web_build <output_dir>
-          ./renpy/renpy.sh ./RedEra web_build ./public
+          # Use xvfb-run and check file structure before/after
+          xvfb-run ./renpy/renpy.sh ./RedEra web_build ./public
+          ls -R ./public
 
       - name: Add NoJekyll
         run: touch ./public/.nojekyll
