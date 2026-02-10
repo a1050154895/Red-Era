@@ -26,6 +26,12 @@ jobs:
         with:
           project_dir: 'RedEra'
           sdk_version: '8.2.1'
+
+      - name: Upload Web Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: red-era-web
+          path: build/web
           
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
