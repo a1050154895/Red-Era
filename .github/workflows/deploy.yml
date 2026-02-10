@@ -2,39 +2,45 @@ name: Build and Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Install Ren'Py Dependencies
+      - name: Install Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgl1-mesa-glx
+          sudo apt-get install -y libgl1-mesa-glx unzip tar curl
 
-      - name: Ren'Py Web Build
-        uses: Project-K-Workshop/renpy-web-build-action@v1.2.0
-        with:
-          project_dir: 'RedEra'
-          sdk_version: '8.2.1'
+      - name: Download and Setup Ren'Py
+        run: |
+          echo "Downloading Ren'Py..."
+          curl -O https://www.renpy.org/dl/8.2.1/renpy-8.2.1-sdk.tar.bz2
+          echo "Extracting..."
+          tar -xjf renpy-8.2.1-sdk.tar.bz2
+          mv renpy-8.2.1-sdk renpy
+          
+      - name: Build Web Version
+        run: |
+          echo "Building Web Version..."
+          # Format: ./renpy.sh <project_path> web_build <output_path>
+          ./renpy/renpy.sh ./RedEra web_build ./deploy_output
 
-      - name: Upload Web Build Artifact
+      - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: red-era-web
-          path: build/web
-          
+          name: web-build
+          path: deploy_output
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: build/web
+          folder: deploy_output
