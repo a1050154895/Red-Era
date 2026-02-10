@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赤色纪元 (Red Era) - 源代码分支</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #0f0f0f;
+            color: #33ff33;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        h1 { margin-bottom: 20px; }
+        p { max-width: 600px; line-height: 1.6; }
+        .box {
+            border: 2px solid #33ff33;
+            padding: 20px;
+            box-shadow: 0 0 10px #33ff33;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>⚠ 404 错误说明 / Status Check</h1>
+        <p>如果你看到了这个页面，说明你部署的是 <strong>Main (源代码)</strong> 分支。</p>
+        <p>If you see this page, you have deployed the <strong>Main (Source Code)</strong> branch.</p>
+        <hr style="border-color: #33ff33; opacity: 0.3;">
+        <p><strong>游戏文件在 "gh-pages" 分支 / The game is on the "gh-pages" branch.</strong></p>
+        <p>请在 Vercel 设置中将 "Production Branch" 修改为 <code>gh-pages</code>。</p>
+        <p>Please change "Production Branch" to <code>gh-pages</code> in Vercel Settings.</p>
+        <p><em>(如果找不到 gh-pages，请去 GitHub Actions 确认构建是否完成)</em></p>
+    </div>
+</body>
+</html>
