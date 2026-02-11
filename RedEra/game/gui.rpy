@@ -1,10 +1,10 @@
 
 # ==============================================================================
-# GUI Configuration
+# GUI Configuration (Simplified & Asset-Free)
 # ==============================================================================
 
 init python:
-    # 默认分辨率
+    # Default Resolution
     gui.init(1280, 720)
 
     # ------------------------------------------
@@ -25,11 +25,12 @@ init python:
     # ------------------------------------------
     # Fonts
     # ------------------------------------------
+    # Ensure this font file actually exists in game/ dir
     gui.text_font = "SourceHanSans-Regular.ttf"
     gui.name_text_font = "SourceHanSans-Regular.ttf"
     gui.interface_text_font = "SourceHanSans-Regular.ttf"
 
-    # text size
+    # Text Sizes
     gui.text_size = 30
     gui.name_text_size = 40
     gui.interface_text_size = 30
@@ -53,45 +54,45 @@ init python:
     gui.text_xalign = 0.5
 
     # ------------------------------------------
-    # Choice Buttons
+    # Buttons & History (No Images)
     # ------------------------------------------
+    # Removed Borders to avoid needing images
+    gui.button_width = None
+    gui.button_height = None
+    gui.button_borders = Borders(4, 4, 4, 4)
+    gui.button_tile = False
+
+    # Choice Button
     gui.choice_button_width = 790
     gui.choice_button_height = None
-    gui.choice_tile = False
-    gui.choice_button_borders = Borders(100, 10, 100, 10)
+    gui.choice_button_tile = False
+    # Set borders to 0 or small constant if no image
+    gui.choice_button_borders = Borders(0, 0, 0, 0) 
     gui.choice_button_text_idle_color = '#cccccc'
     gui.choice_button_text_hover_color = '#ffffff'
-    
-    # ------------------------------------------
-    # Slot Buttons (Save/Load)
-    # ------------------------------------------
+
+    # Slots
     gui.slot_button_width = 276
     gui.slot_button_height = 206
-    gui.slot_button_borders = Borders(10, 10, 10, 10)
+    gui.slot_button_borders = Borders(0, 0, 0, 0)
     gui.slot_button_text_size = 14
     gui.slot_button_text_xalign = 0.5
     gui.slot_button_text_idle_color = '#aaaaaa'
 
-    # ------------------------------------------
     # Scrollbars
-    # ------------------------------------------
     gui.scrollbar_size = 12
     gui.scrollbar_tile = False
-    gui.scrollbar_borders = Borders(4, 4, 4, 4)
+    gui.scrollbar_borders = Borders(0, 0, 0, 0)
     gui.scrollbar_unscrollable = "hide"
 
-    # ------------------------------------------
     # History
-    # ------------------------------------------
     config.history_length = 250
     gui.history_height = 140
     gui.history_name_xpos = 155
     gui.history_text_xpos = 170
     gui.history_text_width = 740
 
-    # ------------------------------------------
-    # NVL-Mode
-    # ------------------------------------------
+    # NVL
     gui.nvl_borders = Borders(0, 10, 0, 10)
     gui.nvl_list_length = 6
     gui.nvl_height = 115
