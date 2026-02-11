@@ -32,7 +32,7 @@ jobs:
         run: |
           echo "Installing Web DLC..."
           # Use xvfb-run to simulate a display server
-          xvfb-run ./renpy/renpy.sh launcher install_web_dlc
+          xvfb-run ./renpy/renpy.sh ./renpy/launcher install_web_dlc
 
       - name: Build Web Version
         run: |
