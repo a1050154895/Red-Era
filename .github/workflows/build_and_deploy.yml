@@ -38,8 +38,15 @@ jobs:
         run: |
           echo "Building Web Version..."
           # Use xvfb-run and check file structure before/after
-          xvfb-run ./renpy/renpy.sh ./RedEra web_build ./public
+          xvfb-run ./renpy/renpy.sh ./RedEra web_build ./public > build_log.txt 2>&1 || true
+          cat build_log.txt
           ls -R ./public
+
+      - name: Upload Build Log
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build_log.txt
 
       - name: Add NoJekyll
         run: touch ./public/.nojekyll
