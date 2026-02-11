@@ -22,7 +22,7 @@ screen say(who, what):
 
         text what id "what"
 
-    if notrenpy.variant("small"):
+    if not renpy.variant("small"):
         add SideImage() xalign 0.0 yalign 1.0
 
 # ------------------------------------------------------------------------------
