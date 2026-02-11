@@ -1,7 +1,10 @@
 
 # ------------------------------------------
-# 1. 核心背景 (Core Backgrounds)
+# 核心背景 (Core Backgrounds)
 # ------------------------------------------
+
+# 游戏封面
+image main_menu_bg = "images/main_menu.png"
 
 # 历史时期
 image bg beijing_snow = "images/bg_beijing_snow.jpg"

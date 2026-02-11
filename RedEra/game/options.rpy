@@ -3,6 +3,10 @@ define config.name = _("Red Era: Divergent Paths")
 define gui.show_name = True
 define config.version = "0.5"
 
+## 界面背景设置
+define gui.main_menu_background = "main_menu_bg"
+define gui.game_menu_background = "main_menu_bg"
+
 define gui.about = _p("""
 A branching historical visual novel exploring the destiny of China from 1912 to 2050.
 """)
