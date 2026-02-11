@@ -7,7 +7,7 @@ label timeline_1949_founding:
     "1949年10月1日，北京，天安门广场。"
     "三十万军民聚集在广场上。红旗如海，欢声雷动。"
     
-    show mao normal at center with dissolve
+    show mao normal at arcade_center with dissolve
     
     mao "（带着浓重的湖南口音，庄严宣告）同胞们！中华人民共和国，中央人民政府，今天成立了！"
     
@@ -29,7 +29,7 @@ label timeline_1950_korean_war:
     "1950年10月，中南海菊香书屋。"
     "窗外寒风凛冽，室内的气氛更是凝重到了极点。"
     
-    show mao normal at center with dissolve
+    show mao normal at arcade_center with dissolve
     
     mao "打得一拳开，免得百拳来。虽然我们现在困难，但如果让美国人摆在鸭绿江边和台湾，我们随时都要过提心吊胆的日子，搞不了建设。"
     
@@ -57,7 +57,7 @@ label timeline_1950_korean_war:
     jump timeline_1951
 
 label timeline_1951:
-    scene black with fade
+    scene bg korean_war with fade
     centered "{size=40}1951年{/size}"
 
     "抗美援朝战争进入相持阶段。西藏和平解放。"
@@ -66,7 +66,7 @@ label timeline_1951:
     jump timeline_1952
 
 label timeline_1952:
-    scene black with fade
+    scene bg factory_1953 with fade # 模拟经济恢复期的建设感
     centered "{size=40}1952年{/size}"
 
     "土地改革基本完成。三亿农民分到了土地。"
@@ -80,7 +80,7 @@ label timeline_1953_five_year_plan:
     "1953年，战争的硝烟散去，大规模经济建设开始了。"
     "长春第一汽车制造厂奠基，鞍山钢铁厂高炉点火。"
     
-    show qian arcade at center with pixel_enter
+    show qian arcade at arcade_center with pixel_enter
     
     "一位刚从美国冲破重重阻力归来的科学家走进了你的办公室。"
     
@@ -105,7 +105,7 @@ label timeline_1953_five_year_plan:
             $ gs.change_stat("productivity", 5)
             "你试图走一条不同的路，但在这个强敌环伺的年代，这条路注定艰难。"
 
-    jump timeline_1956
+    jump timeline_1954
 
 label minigame_construction:
     # 简单的连点小游戏
@@ -150,81 +150,27 @@ label increment_score:
     $ construction_score += 1
     return
 
-label timeline_1956:
-    scene black with fade
-    centered "{size=40}1956年{/size}"
-    
-    "三大改造完成，社会主义制度确立。"
-    "但在辉煌的成就背后，急躁的情绪也在滋长。"
-    "‘多快好省’成了新的口号。"
-    
-    jump timeline_1958
-
-label timeline_1958:
-    scene bg factory_1953 # 复用工厂背景，最好有炼钢背景
-    show layer master at red_flash
-    
-    "1958年。大跃进。"
-    "全国上下，土法炼钢。庄稼烂在地里，人们却在围着高炉转。"
-    
-    # 街机风格：警报
-    play sound audio.sfx_glitch
-    show text "{size=60}{color=#e74c3c}WARNING: STABILITY CRITICAL{/color}{/size}" at truecenter
-    with flash
-    
-    "彭德怀在庐山会议上拍了桌子。那是正直者的怒吼。"
-    
-    $ gs.change_stat("stability", -20)
-    $ gs.change_stat("productivity", -15)
-    
-    jump timeline_1964
-
-label timeline_1964:
-    scene bg desert_mushroom_cloud with fade
-    
-    "1964年10月16日，罗布泊。"
-    
-    show qian arcade at center
-    qian "倒计时... 3, 2, 1, 起爆！"
-    
-    play sound audio.sfx_explosion
-    show layer master at screen_shake
-    
-    # 视觉震撼：蘑菇云升起
-    "一声惊雷，震撼了世界。中国从此有了核保护伞。"
-    
-    $ gs.change_stat("intl_pressure", -30) # 压力大幅骤减
-    $ gs.change_stat("productivity", 10)
-    
-    jump timeline_1966
-
-label timeline_1966:
-    scene bg beijing_snow
-    show layer master at red_flash
-    
-    "1966年。风暴来了。"
-    "这不仅仅是一场权力的更迭，更是一场触及灵魂的革命。"
-    "只是，代价太过沉重。"
-    
-    jump timeline_1976
-
 label timeline_1954:
-    scene black with fade
+    scene bg factory_1953 with fade
     centered "{size=40}1954年{/size}"
 
     "第一届全国人民代表大会召开。第一部宪法颁布。"
-    "日内瓦会议召开。新中国首次以五大国身份参加国际会议。"
-
-    $ gs.change_stat("intl_pressure", -5)
-
+    
+    show zhou coat at arcade_left with moveinleft
+    "日内瓦会议召开。周恩来总理代表新中国首次以五大国身份参加国际会议。"
+    
     jump timeline_1955
 
 label timeline_1955:
-    scene black with fade
+    scene bg factory_1953 with fade
     centered "{size=40}1955年{/size}"
 
-    "万隆会议召开。周恩来提出‘求同存异’方针。"
-    "全军实行军衔制。十大元帅、十大大将授勋。"
+    "万隆会议召开。‘和平共处五项原则’和‘求同存异’方针赢得了亚非国家的尊重。"
+    
+    show qian arcade at arcade_center with dissolve
+    "9月，钱学森终于回到了祖国怀抱。他的归来，让中国的核武器研发进程至少提前了二十年。"
+    
+    $ gs.change_stat("intl_pressure", -10)
 
     jump timeline_1956_hundred_flowers
 
@@ -247,40 +193,38 @@ label timeline_1957:
 label timeline_1958_great_leap:
     scene bg great_leap with fade
     
-    "1958年，急于求成的情绪弥漫在全国。"
-    "‘赶英超美’的口号震天响。村村点火，户户冒烟，全民大炼钢铁。"
+    centered "{size=50}1958年{/size}\n{size=30}‘大跃进’运动爆发{/size}"
     
-    "你看着田里没人收割的麦子，和土高炉里炼出的废铁，心中隐隐不安。"
+    "现在的你，是某县公社的党委书记。看着窗外热火朝天的‘土法炼钢’场面。"
     
-    show mao normal at center with dissolve
+    show mao normal at arcade_center with dissolve
     
-    mao "我们不能走资本主义国家的老路，要打破常规，要大跃进！"
+    mao "超英赶美，就在今朝！我们要发动群众，搞大跃进！"
+    
+    "口号声震天动地，但你看着那些被熔化的农具和还没收割的麦子，感到了隐隐的不安。"
     
     menu:
-        "面对这股狂热的浪潮："
+        "面对浮夸风，你选择："
         
-        "狂热支持，虚报产量 (Class_Consciousness +10, Productivity -20, Stability -10)":
-            "你也被这股热情感染了，或者是被裹挟了。亩产万斤的卫星放上了天。"
-            $ gs.change_stat("class_consciousness", 10)
-            $ gs.change_stat("productivity", -20)
+        "如实上报产量，坚持科学规律 (Productivity +10, Stability -10)":
+            "你说了实话，被扣上了‘右倾机会主义’的帽子。虽然被下放，但你保住了公社的种子粮。"
+            $ gs.change_stat("productivity", 10)
             $ gs.change_stat("stability", -10)
-            "然而，自然规律不会因为热情而改变。接踵而至的是三年困难时期。"
             
-        "保持理性，试图纠偏 (Stability +5, Class_Consciousness -5)":
-            "你试图泼冷水，但很快就被贴上了‘右倾’的标签。"
+        "紧跟形势，上报‘万斤亩’ (Productivity -20, Stability +5, Class_Consciousness +5)":
+            "你成了‘大跃进’的模范。报纸上登载了你的事迹，但社员们却开始挨饿。"
+            $ gs.change_stat("productivity", -20)
             $ gs.change_stat("stability", 5)
-            $ gs.change_stat("class_consciousness", -5)
-            "虽然你保护了一些人，但无法阻挡历史的洪流。"
-
+            $ gs.change_stat("class_consciousness", 5)
+            
     jump timeline_1959
 
 label timeline_1959:
-    scene black with fade
+    scene bg great_leap with fade
     centered "{size=40}1959年{/size}"
 
-    "庐山会议。彭德怀上万言书，被打成反党集团。"
-    "大庆油田被发现，中国甩掉了‘贫油国’的帽子。"
-    "西藏叛乱被平息。"
+    "庐山会议召开。彭德怀元帅的万言书引发了激烈的争论。"
+    "‘反右倾’运动在全国展开。由于自然灾害和政策失误，国家进入了‘三年困难时期’。"
 
     jump timeline_1960
 
@@ -330,7 +274,7 @@ label timeline_1964_atomic_bomb:
     "1964年10月16日，新疆罗布泊。"
     "巨大的蘑菇云腾空而起。中国第一颗原子弹爆炸成功。"
     
-    show qian normal at center with dissolve
+    show qian normal at arcade_center with dissolve
     
     qian "（含泪微笑）手里有了这家伙，腰杆子才算真正硬了。从此以后，没人敢再轻视我们。"
     
@@ -351,32 +295,38 @@ label timeline_1965:
     jump timeline_1966_cultural_revolution
 
 label timeline_1966_cultural_revolution:
-    scene bg cultural_revolution with fade
+    scene bg cultural_rev with fade
+    centered "{size=50}1966年{/size}\n{size=30}‘十年浩劫’的开端{/size}"
     
-    "1966年，一场史无前例的风暴席卷了神州大地。"
-    "大字报、红卫兵、大串联。‘造反有理’的口号响彻云霄。"
+    "现在的你，正站在北京饭店的露台上。下方的广场上，红色的旗帜汇成了海洋。"
     
-    "学校停课，工厂停工。整个国家陷入了一种狂热的混乱中。"
+    show mao normal at arcade_center with dissolve
     
-    show mao normal at center with dissolve
+    mao "你们要关心国家大事，要把无产阶级文化大革命进行到底！"
     
-    mao "（目光复杂）这次运动，重点是整党内那些走资本主义道路的当权派。"
+    "年轻的红卫兵们疯狂地欢呼着。你看到曾经的功勋元勋被拉上台批斗，看到珍贵的文物被砸碎。"
     
-    # 这是一个持续十年的状态，我们简化处理
-    $ gs.change_stat("class_consciousness", 30)
-    $ gs.change_stat("productivity", -20)
-    $ gs.change_stat("stability", -30)
-    
-    "在这十年里，你见证了无数的悲欢离合。有人被打倒，有人被平反，有人迷失，有人坚守。"
-    
+    menu:
+        "面对席卷全国的狂热，你选择："
+        
+        "保护受迫害的知识分子和干部 (Stability +10, Class_Consciousness -10)":
+            "你动用自己的影响力，在牛棚里救下了几位老教授。虽然这让你自己也深陷险境，但你问心无愧。"
+            $ gs.change_stat("stability", 10)
+            $ gs.change_stat("class_consciousness", -10)
+            
+        "紧跟‘统帅’步调，夺取权力 (Class_Consciousness +15, Stability -15)":
+            "你成了造反派的头头。你批斗了你的前任，坐上了他的位子。权力让人陶醉，但也让你变得面目全非。"
+            $ gs.change_stat("class_consciousness", 15)
+            $ gs.change_stat("stability", -15)
+            
     jump timeline_1967
 
 label timeline_1967:
-    scene black with fade
+    scene bg cultural_rev with fade
     centered "{size=40}1967年{/size}"
 
-    "上海‘一月风暴’。夺权之风刮遍全国。"
-    "中国第一颗氢弹爆炸成功。从原子弹到氢弹，中国只用了2年零8个月。"
+    "‘一月风暴’席卷全国。夺权斗争进入白热化。"
+    "但在偏远的罗布泊，第一颗氢弹爆炸成功。‘两弹一星’的精神在动荡中闪光。"
 
     jump timeline_1968
 
@@ -457,38 +407,39 @@ label timeline_1975:
     "邓小平主持全面整顿。国民经济迅速回升。"
     "但好景不长，‘反击右倾翻案风’随之而来。"
 
-    jump timeline_1976_turning_point
+    jump timeline_1976
 
-label timeline_1976_turning_point:
-    scene bg turning_point_1976 with fade
-    play music audio.bgm_history_sad fadein 2.0
-    play sfx audio.sfx_rain fadein 2.0
+label timeline_1976:
+    scene bg cultural_rev with fade
+    centered "{size=40}1976年{/size}"
+
+    "1月，周恩来总理逝世。4月，天安门广场爆发悼念周总理、反对‘四人帮’的运动。"
+    "7月，唐山大地震。24万鲜活的生命瞬间逝去。国殇之年，阴云密布。"
     
-    "1976年。巨星陨落。"
-    "周恩来、朱德、毛泽东相继逝世。整个国家笼罩在巨大的悲痛与迷茫中。"
-    "中南海，怀仁堂。一场决定中国未来命运的会议即将召开。"
+    scene bg red_boat with dissolve # 象征最终的落幕与新生
+    "9月9日，毛泽东主席与世长辞。一个时代落幕了。"
+    "10月，‘四人帮’被粉碎。十年动乱终于结束。"
     
-    "现在的你，掌握着关键的一票。"
+    show mao normal at arcade_center with dissolve
+    "（最后的回响）历史将如何评价我们？是功，是过？"
     
+    "中国站在了新的十字路口。你可以选择通往未来的道路。"
+
+    # --- 最终结局分歧点 ---
     menu:
-        "中国该往何处去？"
+        "选择你的未来愿景："
         
-        "【历史线】逮捕激进派，走向改革开放":
-            "你认为国家已经经不起折腾了，必须把重心转到经济建设上来。"
-            "这是一个务实的选择。中国将融入世界，创造经济奇迹。"
-            $ gs.change_stat("productivity", 30)
-            $ gs.change_stat("stability", 20)
-            $ gs.change_stat("class_consciousness", -20)
-            jump branch_history_reform
+        "【红色时间线】建立一个公平、高效的赛博共产主义社会 (Red Timeline)":
+            "你坚信，技术应该为全人类服务，而非少数人的工具。你开始着手构建‘赤色互联网’。"
+            jump timeline_red_2030
             
-        "【赤色未来线】坚持激进路线，开启赛博共产实验":
-            "你认为放弃阶级斗争就是背叛。但你也意识到，传统的生产方式无法支撑这个理想。"
-            "你需要一种新的力量——不仅是思想的武装，更是技术的飞升。"
-            "Project OGAS... 启动。"
-            $ gs.change_stat("class_consciousness", 30)
-            $ gs.change_stat("productivity", 10)
-            $ gs.change_stat("intl_pressure", 20)
-            jump branch_red_future
+        "【蓝色时间线】走上资本驱动的自由市场与高科技之路 (Blue Timeline)":
+            "你认为竞争是发展的唯一动力。在霓虹灯下，一座座摩天大楼拔地而起。"
+            jump timeline_blue_2030
+            
+        "【回归现实】继续在历史的余晖中探索 (New Game Plus)":
+            "你决定再次审视历史。或许，答案就在那些被遗忘的角落里。"
+            return
 
 label branch_history_reform:
     scene black with fade

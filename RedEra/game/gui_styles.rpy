@@ -139,7 +139,7 @@ screen minigame_corporate(current_value, target_value):
         yalign 0.5
         spacing 50
 
-        text "MARKET STABILIZATION PROTOCOL" style "arcade_text" size 60 color "#00ffff" outlines [(2, "#000000", 0, 0)]
+        text "MARKET STABILIZATION PROTOCOL" style "arcade_text" size 60 color "#00ffff"
 
         # 动态变化的进度条
         bar value current_value range target_value xsize 800 ysize 50 style "arcade_bar"

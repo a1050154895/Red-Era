@@ -893,49 +893,14 @@ label blue_ending_rebellion:
     "Citizen ID: [gs.productivity * 1984]"
     "Social Credit: [gs.stability]"
     
-    jump timeline_blue_end
+    jump timeline_blue_end_final
 
-label timeline_blue_end:
+label timeline_blue_end_final:
     scene black
     centered "{size=60}BLUE ENDING: THE CORPORATE STATE{/size}"
     "历史在这里终结，或者说，被私有化了。"
     return
-    "护照被‘工牌’取代。你的国籍就是你的公司。"
 
-    jump timeline_blue_2030
-
-label timeline_blue_2030:
-    scene black with fade
-    centered "{size=40}2030年{/size}"
-
-    "脑机接口商用化。富人可以购买‘知识包’，瞬间掌握技能。"
-    "穷人出卖大脑算力，成为‘生物矿机’。"
-    "阶级差异不仅仅是财富，而是物种的差异。"
-
-    jump timeline_blue_2035
-
-label timeline_blue_2035:
-    scene black with fade
-    centered "{size=40}2035年{/size}"
-
-    "海平面上升淹没了沿海城市。但富人区建立了巨大的穹顶（Dome）。"
-    "穹顶内四季如春，穹顶外酸雨横行。"
-    "‘流浪地球’？不，是‘极乐空间’。"
-
-    jump timeline_blue_2040
-
-label timeline_blue_2040:
-    scene black with fade
-    centered "{size=40}2040年{/size}"
-
-    "‘永生计划’推出。只要支付足够的Credits，就可以将意识上传到云端。"
-    "但如果没钱续费，你的意识就会被删除，或者被重置为NPC。"
-
-    jump timeline_blue_2045
-
-label timeline_blue_2045:
-    scene black with fade
-    centered "{size=40}2045年{/size}"
 
     "第一位AI CEO掌管了最大的财阀集团。"
     "它计算出，裁掉90%的人类员工能使利润最大化。"
@@ -951,9 +916,10 @@ label timeline_blue_2049:
     "但这面旗帜已经没有意义。真正的统治者是高悬在摩天大楼上的霓虹Logo。"
     "总统只是一个全息投影吉祥物。"
 
-    jump timeline_blue_2050
+    jump timeline_blue_2050_v2
 
-label timeline_blue_2050:
+label timeline_blue_2050_v2:
+
     scene bg cyberpunk_2050_blue with fade
     
     "2050年。蓝线终局。"

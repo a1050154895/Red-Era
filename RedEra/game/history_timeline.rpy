@@ -5,7 +5,8 @@
 # ==========================================
 
 label timeline_1913:
-    scene black with fade
+    scene bg beijing_snow with fade
+    show yuan normal at arcade_center with dissolve
     centered "{size=40}1913年{/size}"
     
     "3月20日，上海火车站的枪声震惊了全国。宋教仁先生倒在血泊中。"
@@ -18,10 +19,14 @@ label timeline_1913:
     jump timeline_1914
 
 label timeline_1914:
-    scene black with fade
+    scene bg beijing_snow with fade
+    show yuan normal at arcade_center with dissolve
     centered "{size=40}1914年{/size}"
 
     "1月，袁世凯下令解散国会。中华民国只剩下了一个空壳。"
+    
+    hide yuan with dissolve
+    scene bg shanghai_rain with dissolve
     "7月，第一次世界大战爆发。列强在欧洲厮杀，暂时放松了对中国的钳制。"
     "民族工业迎来了短暂的‘黄金时代’。纺织厂、面粉厂如雨后春笋般涌现。"
 
@@ -30,12 +35,15 @@ label timeline_1914:
     jump timeline_1915
 
 label timeline_1915:
-    scene black with fade
+    scene bg beijing_snow with fade
+    show yuan normal at arcade_center with dissolve
     centered "{size=40}1915年{/size}"
     
     "为了换取日本的支持，袁世凯签下了丧权辱国的‘二十一条’。"
     "年底，他穿上了龙袍，做起了‘洪宪皇帝’的迷梦。"
     
+    hide yuan with dissolve
+    scene bg shanghai_rain with dissolve
     "但在上海的法租界，一本名为《青年杂志》的小册子悄然问世。"
     "陈独秀高举‘德先生’与‘赛先生’的大旗，向封建礼教宣战。"
     
@@ -47,10 +55,14 @@ label timeline_1915:
     jump timeline_1916
 
 label timeline_1916:
-    scene black with fade
+    scene bg beijing_snow with fade
+    show yuan normal at arcade_center with dissolve
     centered "{size=40}1916年{/size}"
     
     "做了83天皇帝梦的袁世凯在唾骂声中死去。"
+    hide yuan with dissolve
+    
+    scene bg shanghai_rain with dissolve
     "但他留下的不是和平，而是分裂。北洋军裂变为直、皖、奉三系，中国进入了长达十余年的军阀混战。"
     
     $ gs.change_stat("stability", -10)
@@ -59,19 +71,23 @@ label timeline_1916:
     jump timeline_1917
 
 label timeline_1917:
-    scene black with fade
+    scene bg beijing_snow with fade
     centered "{size=40}1917年{/size}"
     
     "张勋复辟的闹剧像一场滑稽戏，但也彻底撕碎了民国最后的遮羞布。"
+    
+    scene bg shanghai_rain_night with dissolve
     "但在遥远的北方，俄国爆发了十月革命。阿芙乐尔号巡洋舰的炮声，穿越西伯利亚的寒风，传到了中国。"
     
     jump timeline_1918
 
 label timeline_1918:
-    scene black with fade
+    scene bg beijing_snow with fade
     centered "{size=40}1918年{/size}"
 
     "11月，一战结束。北京城里欢呼‘公理战胜强权’。"
+    
+    scene bg shanghai_rain with dissolve
     "李大钊在《新青年》上发表《庶民的胜利》，预言‘试看将来的环球，必是赤旗的世界’。"
 
     $ gs.change_stat("class_consciousness", 5)
@@ -95,7 +111,7 @@ label event_1919_may_fourth:
     "天安门前，三千多名学生振臂高呼：‘外争主权，内除国贼！’"
     "赵家楼的火光，照亮了整个北京城。"
 
-    show lu normal at left with moveinleft
+    show lu normal at arcade_left with moveinleft
     
     lu "（站在人群边缘，目光深邃）看到了吗？这就是沉默中爆发的力量。这不仅仅是学生的愤怒，这是民族的觉醒。"
     
@@ -117,16 +133,21 @@ label event_1919_may_fourth:
     jump timeline_1920
 
 label timeline_1920:
-    scene black with fade
+    scene bg beijing_snow with fade # 模拟大城市或留学生背景
     centered "{size=40}1920年{/size}"
 
     "陈独秀在上海组建马克思主义研究会。各地共产主义小组如星火般点燃。"
+    
+    show deng worker at arcade_left with moveinleft
     "在法国勤工俭学的留学生中，周恩来、邓小平等年轻人也开始接受马克思主义。"
+    "年轻的邓小平此时正在雷诺工厂做工，他在机器的轰鸣声中思考着中国的未来。"
+    
+    hide deng worker with dissolve
 
     jump timeline_1921
 
 label timeline_1921:
-    scene black with fade
+    scene bg red_boat with fade
     centered "{size=40}1921年{/size}"
     
     "7月，上海法租界望志路106号。几位书生悄悄聚在一起。"
@@ -141,7 +162,7 @@ label timeline_1921:
     jump timeline_1922
 
 label timeline_1922:
-    scene black with fade
+    scene bg shanghai_rain_night with fade
     centered "{size=40}1922年{/size}"
 
     "年初，香港海员大罢工爆发，持续56天，最终取得胜利。"
@@ -152,7 +173,7 @@ label timeline_1922:
     jump timeline_1923
 
 label timeline_1923:
-    scene black with fade
+    scene bg shanghai_rain with fade
     centered "{size=40}1923年{/size}"
 
     "2月，京汉铁路工人大罢工遭到吴佩孚的血腥镇压。‘二七惨案’震惊中外。"
@@ -163,29 +184,36 @@ label timeline_1923:
     jump timeline_1924
 
 label timeline_1924:
-    scene black with fade
+    scene bg beijing_snow with fade # 暂时使用北京雪景模拟北方或大城市背景
     centered "{size=40}1924年{/size}"
     
     "国民党一大召开，确立‘联俄、联共、扶助农工’三大政策。"
     "在广州黄埔岛上，一所军校拔地而起。门口贴着一副对联：‘升官发财请往他处，贪生怕死勿入斯门’。"
     
+    show chen young at arcade_left with moveinleft
+    "你在这里见到了年轻的陈赓。此时的他，是黄埔一期的佼佼者，满腔热血。"
+    
     jump timeline_1925
 
 label timeline_1925:
-    scene black with fade
+    scene bg beijing_snow with fade
     centered "{size=40}1925年{/size}"
     
     "3月12日，孙中山先生在北京逝世。‘革命尚未成功，同志仍须努力’成了他的遗言。"
+    
+    scene bg shanghai_rain with dissolve
     "5月30日，上海爆发‘五卅惨案’，反帝浪潮席卷全国。"
     
     jump timeline_1926
 
 label timeline_1926:
-    scene black with fade
+    scene bg beijing_snow with fade # 模拟大城市背景
     centered "{size=40}1926年{/size}"
     
     "7月9日，国民革命军在广州誓师北伐。叶挺独立团作为先锋，一路势如破竹。"
     "吴佩孚、孙传芳的主力被接连击溃。革命的浪潮似乎势不可挡。"
+    
+    show chiang uniform at arcade_center with dissolve
     "但在胜利的欢呼声中，你看到了阴影在滋长。那个叫蒋介石的总司令，眼神越发阴沉。"
     
     jump chapter_1_shanghai
@@ -194,10 +222,12 @@ label timeline_1926:
 # 这里需要定义 1927 之后的跳转接口
 
 label timeline_1927_aftermath:
-    scene black with fade
+    scene bg shanghai_rain_night with fade
     centered "{size=40}1927年 下半年{/size}"
     
     "大革命失败了。白色恐怖笼罩着中国。"
+    
+    scene bg red_boat with dissolve # 象征火种
     "但在绝望中，有人在南昌打响了第一枪，有人在秋收时节举起了暴动的旗帜。"
     
     jump timeline_1928
@@ -205,112 +235,14 @@ label timeline_1927_aftermath:
 label timeline_1928:
     scene bg jinggangshan with fade
     centered "{size=40}1928年{/size}"
-    
+
     "井冈山的翠竹依旧青翠。毛泽东在这里点燃了‘工农武装割据’的星星之火。"
-    "‘朱毛会师’，红四军成立。"
-    
-    show mao normal at center with pixel_enter
-    
-    mao "敌人只能砍下我们的头颅，决不能动摇我们的信仰！因为我们信仰的主义，乃是宇宙的真理！"
-    
-    menu:
-        "面对围剿，红军的战略是？"
-        
-        "敌进我退，敌驻我扰 (生产力 -5, 阶级觉悟 +10)":
-             $ gs.change_stat("class_consciousness", 10)
-             "游击战术初显神威。红军在运动中消灭敌人，壮大自己。"
-             
-        "分兵把守，寸土不让 (稳定 -10, 生产力 -10)":
-             $ gs.change_stat("stability", -10)
-             "分兵导致被各个击破。这是惨痛的教训。"
-             
-    jump timeline_1931
-
-label timeline_1931:
-    scene black with fade
-    centered "{size=40}1931年{/size}"
-    
-    "9月18日，沈阳。日军炸毁南满铁路，炮轰北大营。"
-    "‘九一八事变’爆发。东北沦陷。"
-    
-    play sound audio.sfx_explosion
-    show layer master at screen_shake
-    
-    "南京政府下令‘绝对不抵抗’。数千万同胞沦为亡国奴。"
-    
-    $ gs.change_stat("intl_pressure", 20)
-    $ gs.change_stat("stability", -15)
-    
-    jump timeline_1934
-
-label timeline_1934:
-    scene bg long_march with fade
-    centered "{size=40}1934年{/size}"
-    
-    "第五次反围剿失败。红军被迫进行战略转移。"
-    "这是一次前所未有的远征。湘江之战，血染湘江。"
-    
-    # 街机互动：长征抉择
-    show qte_mash_button at center
-    "（这里是生与死的考验！保持信念！）"
-    $ renpy.pause(1.0, hard=True)
-    hide qte_mash_button
-    
-    jump timeline_1935
-
-label timeline_1935:
-    scene black with fade
-    centered "{size=40}1935年{/size}"
-    
-    "遵义会议。历史在这一刻转弯。"
-    "确立了毛泽东在党和红军中的领导地位。挽救了党，挽救了红军，挽救了中国革命。"
-    
-    $ gs.change_stat("class_consciousness", 20)
-    $ gs.change_stat("stability", 10)
-    
-    jump timeline_1937
-
-label timeline_1937:
-    scene bg yanan with fade
-    centered "{size=40}1937年{/size}"
-    
-    "7月7日，卢沟桥事变。全面抗战爆发。"
-    "延安成为了全国进步青年的圣地。"
-    
-    show mao normal at center
-    mao "中国人民站起来了！这一次，我们绝不退缩！"
-    
-    jump timeline_1945
-
-label timeline_1945:
-    scene bg chongqing with fade
-    centered "{size=40}1945年{/size}"
-    
-    "日本投降。举国欢腾。"
-    "但在重庆，一场鸿门宴正在上演。"
-    
-    show mao normal at left
-    show chiang uniform at right
-    
-    "毛泽东飞赴重庆谈判。为了和平，为了民主。"
-    
-    chiang "（面带微笑，眼神冰冷）润之啊，这天下还是得有一个主义，一个领袖才行。"
-    
-    jump timeline_1949
-
-    
-    "四一二的血迹未干，七一五政变接踵而至。国共合作彻底破裂。"
-    "但在黑暗中，枪声再次响起。"
-    "8月1日南昌城头的枪声，9月湘赣边界的秋收起义..."
-    "起义军最终汇聚到了罗霄山脉的中段——井冈山。"
-    
-    jump timeline_1928
-
-label timeline_1928:
-    scene bg jinggangshan with fade
-    centered "{size=40}1928年{/size}"
-
     "4月，朱毛会师。中国工农红军第四军成立。"
+    
+    show mao normal at arcade_center with dissolve
+    
+    mao "敌人只能砍下我们的头颅，决不能动摇我们的信仰！"
+
     "‘敌进我退，敌驻我扰，敌疲我打，敌退我追’。游击战的十六字诀在山林间回响。"
     "与此同时，皇姑屯的一声巨响，张作霖被日本人炸死。东北易帜。"
 
@@ -319,10 +251,12 @@ label timeline_1928:
     jump timeline_1929
 
 label timeline_1929:
-    scene black with fade
+    scene bg jinggangshan with fade
     centered "{size=40}1929年{/size}"
 
-    "12月，古田会议召开。确立了‘思想建党，政治建军’的原则。"
+    "12月，古田会议召开。确立了‘思想建党，政治建军’原则。"
+    
+    show mao normal at arcade_center with dissolve
     "红军不再是单纯的武装力量，而是执行政治任务的武装集团。"
 
     $ gs.change_stat("class_consciousness", 10)
@@ -330,7 +264,7 @@ label timeline_1929:
     jump timeline_1930
 
 label timeline_1930:
-    scene black with fade
+    scene bg jinggangshan with fade
     centered "{size=40}1930年{/size}"
 
     "中原大战爆发。蒋介石与冯玉祥、阎锡山混战，死伤枕藉。"
@@ -351,10 +285,12 @@ label timeline_1931:
     jump timeline_1932
 
 label timeline_1932:
-    scene black with fade
+    scene bg shanghai_rain with fade
     centered "{size=40}1932年{/size}"
 
     "1月28日，日军进攻上海，‘一·二八’事变爆发。十九路军奋起抵抗。"
+    
+    scene bg beijing_snow with dissolve # 模拟北方伪满洲国背景
     "3月，伪满洲国成立。溥仪再次坐上了傀儡的龙椅。"
 
     $ gs.change_stat("intl_pressure", 10)
@@ -362,10 +298,12 @@ label timeline_1932:
     jump timeline_1933
 
 label timeline_1933:
-    scene black with fade
+    scene bg beijing_snow with fade # 模拟北方长城背景
     centered "{size=40}1933年{/size}"
 
     "长城抗战。喜峰口的大刀队砍出了中国军人的血性。"
+    
+    scene bg jinggangshan with dissolve
     "但在南方，第五次反围剿开始了。这次，敌人采用了‘堡垒主义’，步步为营。"
 
     jump timeline_1934
@@ -379,7 +317,7 @@ label timeline_1934:
     
     "现在的你，是一名红军团长，正带着残部在贵州的崇山峻岭中穿行。"
     
-    show mao normal at center with dissolve
+    show mao normal at arcade_center with dissolve
     
     "在通道会议上，那个操着湖南口音的高个子站了出来。"
     mao "不能再往那个口袋里钻了！我们要转兵贵州！"
@@ -416,8 +354,19 @@ label timeline_1936:
 
     "10月，红军三大主力会师。长征结束。"
     "12月12日，西安事变爆发。张学良、杨虎城兵谏蒋介石。"
-    "经过多方斡旋，蒋介石被迫接受‘停止内战，联共抗日’。"
-
+    
+    show chiang uniform at arcade_right with dissolve
+    "在西安的华清池，蒋介石被迫停下了‘围剿’的脚步。"
+    
+    show zhou coat at arcade_left with moveinleft
+    "周恩来代表中共赶赴西安，为了民族大义，多方斡旋。"
+    
+    "经过多方谈判，蒋介石被迫接受‘停止内战，联共抗日’。"
+    
+    hide chiang uniform
+    hide zhou coat
+    with dissolve
+    
     $ gs.change_stat("intl_pressure", -5)
     $ gs.change_stat("stability", 10)
 
@@ -515,8 +464,8 @@ label timeline_1945:
     
     "现在的你，是负责保卫工作的警卫员。看着毛泽东戴上盔式帽，登上了飞往重庆的飞机。"
     
-    show mao normal at left
-    show chiang uniform at right
+    show mao normal at arcade_left
+    show chiang uniform at arcade_right
     
     "双十协定签了，但你知道，这不过是暴风雨前的宁静。"
     

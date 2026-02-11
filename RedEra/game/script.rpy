@@ -87,17 +87,17 @@ label start:
     "你下意识地摸了摸后脑勺——那条辫子昨天刚剪掉，现在的你，是刚从日本弘文学院回国的留学生。"
     "怀里揣着那本没读完的《天演论》，你走进了绍兴会馆。"
 
-    show lu normal at center with dissolve
+    show lu normal at arcade_center with dissolve
     
     "看见那个留着隶书一字胡的中年人，正对着一棵槐树发呆。"
     
     lu "（吐出一口白气）剪了辫子，这心里头倒是轻快了不少。可我看这街上的人，膝盖还是软的。"
     lu "皇上没了，可心里的皇上还在。只要这心里的皇上不倒，换谁坐那个龙椅，这天下的戏码都一样。"
-
+    
     "他转过身，目光如炬地看着你。"
-
+    
     lu "你说，这中国往后的路，该怎么走？是靠那一纸共和的招牌，还是得换个活法？"
-
+    
     menu:
         "面对鲁迅先生的拷问，你的回答是？"
 
@@ -141,7 +141,7 @@ label chapter_1_shanghai:
     "雨像断了线的珠子，砸在法租界的青石板路上，溅起一片片浑浊的水花。"
     
     # 陈赓登场
-    show chen coat at center with moveinright
+    show chen coat at arcade_center with moveinright
     
     chen "（掸了掸风衣上的水珠，嘴角挂着一丝玩世不恭的笑）"
     chen "这鬼天气，老天爷都在替咱们哭丧呢？还是说，他在帮咱们洗地？"
@@ -179,7 +179,7 @@ label event_412_clash:
     chen "来得好！"
     
     # 模拟 QTE：快速点击
-    show qte_mash_button at center
+    show qte_mash_button
     "（快速点击鼠标以进行反击！）"
     $ renpy.pause(1.0, hard=True) # 模拟反应时间
     
