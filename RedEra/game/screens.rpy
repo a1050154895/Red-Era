@@ -170,7 +170,7 @@ screen confirm(message, yes_action, no_action):
     modal True
     zorder 200
     style_prefix "confirm"
-    add "gui/overlay/confirm.png"
+    # add "gui/overlay/confirm.png" # Image missing, using frame background instead
 
     frame:
         vbox:
