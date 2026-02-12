@@ -28,7 +28,7 @@ jobs:
           mv renpy-8.5.2-sdk renpy
           chmod +x renpy/renpy.sh
 
-      - name: Install Web Support (Raphy)
+      - name: Install Web Support
         run: |
           echo "Installing Web DLC..."
           # Use xvfb-run to simulate a display server
@@ -39,20 +39,21 @@ jobs:
           echo "Building Web Version..."
           # Create public directory first
           mkdir -p ./public
-          # Build the web version
-          xvfb-run ./renpy/renpy.sh ./RedEra distribute web_build || true
+          # Build the web version using the correct Ren'Py command
+          xvfb-run ./renpy/renpy.sh ./RedEra distribute web || true
           # Check if build was successful
+          echo "Checking dists directory..."
           if [ -d "./RedEra/dists" ]; then
+            echo "Dists directory found:"
             ls -R ./RedEra/dists
-            # Find and move the web build to public
-            WEB_BUILD=$(find ./RedEra/dists -type d -name "*web*" | head -1)
-            if [ -n "$WEB_BUILD" ]; then
-              echo "Found web build at: $WEB_BUILD"
-              cp -r "$WEB_BUILD"/* ./public/
-            else
-              echo "No web build found in dists"
-              ls -R ./RedEra
-            fi
+            # Find and copy the web build to public
+            find ./RedEra/dists -type d -name "web" | while read webdir; do
+              echo "Found web directory at: $webdir"
+              cp -r "$webdir"/* ./public/ || echo "Copy failed"
+            done
+            # List public directory contents
+            echo "Public directory contents:"
+            ls -la ./public
           else
             echo "Dists directory not found"
             ls -R ./RedEra
