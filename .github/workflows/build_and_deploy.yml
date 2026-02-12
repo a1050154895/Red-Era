@@ -57,6 +57,7 @@ jobs:
           else
             echo "Dists directory not found"
             ls -R ./RedEra
+            exit 1
           fi
 
       - name: Upload Build Log
@@ -65,6 +66,15 @@ jobs:
           name: build-log
           path: build_log.txt
           if-no-files-found: ignore
+
+      - name: Check Public Directory
+        run: |
+          echo "Checking public directory before deployment:"
+          ls -la ./public
+          if [ ! -f "./public/index.html" ]; then
+            echo "ERROR: index.html not found in public directory!"
+            exit 1
+          fi
 
       - name: Add NoJekyll
         run: touch ./public/.nojekyll
