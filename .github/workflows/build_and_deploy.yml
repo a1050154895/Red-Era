@@ -39,8 +39,8 @@ jobs:
           echo "Building Web Version..."
           # Create public directory first
           mkdir -p ./public
-          # Build the web version using the correct Ren'Py command for 8.5.2
-          xvfb-run ./renpy/renpy.sh ./RedEra build web || true
+          # Build the web version using launcher distribute command
+          xvfb-run ./renpy/renpy.sh ./renpy/launcher distribute ./RedEra || true
           # Check if build was successful
           echo "Checking dists directory..."
           if [ -d "./RedEra/dists" ]; then
