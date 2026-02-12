@@ -35,28 +35,28 @@ jobs:
           xvfb-run ./renpy/renpy.sh ./renpy/launcher install_web_dlc || echo "Web DLC install may have warnings, continuing..."
 
       - name: Build Web Version
-          run: |
-            echo "Building Web Version..."
-            # Create public directory first
-            mkdir -p ./public
-            # Build the web version
-            xvfb-run ./renpy/renpy.sh ./RedEra distribute web_build || true
-            # Check if build was successful
-            if [ -d "./RedEra/dists" ]; then
-              ls -R ./RedEra/dists
-              # Find and move the web build to public
-              WEB_BUILD=$(find ./RedEra/dists -type d -name "*web*" | head -1)
-              if [ -n "$WEB_BUILD" ]; then
-                echo "Found web build at: $WEB_BUILD"
-                cp -r "$WEB_BUILD"/* ./public/
-              else
-                echo "No web build found in dists"
-                ls -R ./RedEra
-              fi
+        run: |
+          echo "Building Web Version..."
+          # Create public directory first
+          mkdir -p ./public
+          # Build the web version
+          xvfb-run ./renpy/renpy.sh ./RedEra distribute web_build || true
+          # Check if build was successful
+          if [ -d "./RedEra/dists" ]; then
+            ls -R ./RedEra/dists
+            # Find and move the web build to public
+            WEB_BUILD=$(find ./RedEra/dists -type d -name "*web*" | head -1)
+            if [ -n "$WEB_BUILD" ]; then
+              echo "Found web build at: $WEB_BUILD"
+              cp -r "$WEB_BUILD"/* ./public/
             else
-              echo "Dists directory not found"
+              echo "No web build found in dists"
               ls -R ./RedEra
             fi
+          else
+            echo "Dists directory not found"
+            ls -R ./RedEra
+          fi
 
       - name: Upload Build Log
         uses: actions/upload-artifact@v4
